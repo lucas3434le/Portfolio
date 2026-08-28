@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1100">
     <title>Mijn Portfolio Tijdlijn</title>
     <style>
         * {
@@ -17,10 +17,14 @@
             color: #f3f3f3;
             line-height: 1.6;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         header {
             height: 100vh;
+            width: 1100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -42,12 +46,13 @@
         }
 
         .timeline-container {
-            max-width: 1000px;
-            margin: 0 auto;
+            width: 1100px;
             position: relative;
             padding: 0 2rem 25rem 2rem;
+            margin: 0 auto;
         }
 
+        /* De verticale middellijn exact in het midden van de 1100px breedte */
         .timeline-container::before {
             content: '';
             position: absolute;
@@ -65,6 +70,7 @@
             align-items: center;
             margin-bottom: 45vh;
             position: relative;
+            width: 100%;
         }
 
         .timeline-item:nth-child(even) {
@@ -97,7 +103,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- Onze eigen ingebouwde videospeler --- */
+        /* --- Videospeler in portret-verhouding --- */
         .video-placeholder {
             width: 100%;
             max-width: 280px;
@@ -119,6 +125,7 @@
             display: block;
         }
 
+        /* --- Plaatjesbox --- */
         .image-box {
             width: 42%;
             height: 600px;
@@ -131,11 +138,12 @@
             opacity: var(--progress, 0.2);
             filter: grayscale(calc(80% * (1 - var(--progress, 0))));
             
-            transform: translateX(calc(55vw * (1 - var(--progress, 0))));
+            /* Gebruik vaste pixels in plaats van vw zodat het altijd symmetrisch blijft ten opzichte van de 1100px layout */
+            transform: translateX(calc(550px * (1 - var(--progress, 0))));
         }
 
         .timeline-item:nth-child(even) .image-box {
-            transform: translateX(calc(-55vw * (1 - var(--progress, 0))));
+            transform: translateX(calc(-550px * (1 - var(--progress, 0))));
         }
 
         .image-box img {
@@ -143,44 +151,6 @@
             height: 100%;
             object-fit: cover;
             transform: scale(calc(1 + (0.05 * var(--progress, 0))));
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            .timeline-container {
-                padding: 0 1rem 10rem 1rem;
-            }
-
-            .timeline-container::before {
-                left: 20px;
-            }
-
-            .timeline-item, .timeline-item:nth-child(even) {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-left: 35px;
-                margin-bottom: 25vh;
-            }
-
-            .content-box, .image-box {
-                width: 100%;
-                transform: none !important;
-                opacity: 1 !important;
-            }
-
-            .image-box {
-                margin-top: 1.5rem;
-                height: 350px;
-                filter: grayscale(0%);
-            }
-
-            .video-placeholder {
-                max-width: 100%;
-                height: 380px;
-            }
         }
     </style>
 </head>
@@ -193,10 +163,11 @@
 
     <section class="timeline-container">
 
+        <!-- Project 1 -->
         <div class="timeline-item">
             <div class="content-box">
                 <div class="year">2025 — Heden</div>
-                <h2>AI Geïntegreerde Dashboard</h2>
+                <h2>Robotcrab</h2>
                 <p>Een minimalistische tool om data te visualiseren met behulp van moderne webstandaarden en machine learning API's. Dit project richt zich volledig op het stroomlijnen van complexe datasets naar heldere, behapbare inzichten voor de eindgebruiker zonder onnodige afleiding of trage laadtijden.</p>
                 <p>Door intensief te experimenteren met nieuwe framework-architecturen en slimme caching-strategieën is het gelukt om de interactiesnelheid met meer dan veertig procent te verhogen. Het ontwerp ademt rust en efficiëntie uit.</p>
                 
@@ -209,15 +180,16 @@
             </div>
         </div>
 
+        <!-- Project 2 -->
         <div class="timeline-item">
             <div class="content-box">
                 <div class="year">2024</div>
-                <h2>E-commerce Minimalisme</h2>
+                <h2>Horlogewinder</h2>
                 <p>Een grondig herontwerp van een online winkelomgeving waarbij alle visuele ruis en overbodige elementen zijn verwijderd. De focus ligt hier puur op de productbeleving en een naadloze, frictievrije checkout-flow die de conversieratio flink heeft weten te verhogen.</p>
                 <p>De backend is volledig modulair opgebouwd, waardoor het onderhoud minimaal is en schalen naar miljoenen bezoekers per maand probleemloos verloopt. Rust en overzicht staan hierbij altijd op de eerste plaats.</p>
                 
                 <div class="video-placeholder">
-                    <video src="Parallelscara.mp4" controls preload="metadata"></video>
+                    <video src="Horlogewinder.mp4" controls preload="metadata"></video>
                 </div>
             </div>
             <div class="image-box">
@@ -225,10 +197,11 @@
             </div>
         </div>
 
+        <!-- Project 3 -->
         <div class="timeline-item">
             <div class="content-box">
                 <div class="year">2023</div>
-                <h2>Open Source Fotografie</h2>
+                <h2>Penplotter</h2>
                 <p>Een uniek platform ontwikkeld voor analoge en digitale fotografen om hun werk ongecomprimeerd en in volledige visuele rust te tonen aan een internationaal publiek. Geen pop-ups, geen advertenties, maar enkel pure esthetiek en respect voor het kunstwerk.</p>
                 <p>Het platform biedt geavanceerde kleurprofiel-ondersteuning en een supersnelle CDN-infrastructuur, waardoor fotografen uit de hele wereld hun portfolio met een gerust hart kunnen delen op maximale resolutie.</p>
                 
@@ -241,14 +214,29 @@
             </div>
         </div>
 
+        <!-- Project 4 -->
+        <div class="timeline-item">
+            <div class="content-box">
+                <div class="year">2022</div>
+                <h2>Parallelscara</h2>
+                <p>Een geavanceerd mechatronica-systeem ontworpen voor uiterst precieze en snelle bewegingen. Dit project combineert strak industriële vormgeving met optimale kinematische prestaties.</p>
+                <p>De focus lag hier op het minimaliseren van trillingen en het maximaliseren van de doorvoersnelheid, wat resulteerde in een extreem betrouwbaar en vloeiend werkend prototype.</p>
+                
+                <div class="video-placeholder">
+                    <video src="Parallelscara.mp4" controls preload="metadata"></video>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="https://picsum.photos/seed/project4/800/1200" alt="Project 4">
+            </div>
+        </div>
+
     </section>
 
     <script>
         const items = document.querySelectorAll('.timeline-item');
 
         function updateTimeline() {
-            if (window.innerWidth <= 768) return;
-
             items.forEach(item => {
                 const rect = item.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
