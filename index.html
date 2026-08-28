@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijn Portfolio Tijdlijn</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: #f3f3f3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 2rem 25rem 2rem;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: #222;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 45vh;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .content-box {
+            width: 42%;
+            opacity: var(--progress, 0.2);
+            transform: translateY(calc(20px * (1 - var(--progress, 0))));
+        }
+
+        .year {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Onze eigen ingebouwde videospeler --- */
+        .video-placeholder {
+            width: 100%;
+            max-width: 280px;
+            height: 420px;
+            background-color: #1a1a1a;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-box {
+            width: 42%;
+            height: 600px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            
+            opacity: var(--progress, 0.2);
+            filter: grayscale(calc(80% * (1 - var(--progress, 0))));
+            
+            transform: translateX(calc(55vw * (1 - var(--progress, 0))));
+        }
+
+        .timeline-item:nth-child(even) .image-box {
+            transform: translateX(calc(-55vw * (1 - var(--progress, 0))));
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(calc(1 + (0.05 * var(--progress, 0))));
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .timeline-container {
+                padding: 0 1rem 10rem 1rem;
+            }
+
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-item, .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 35px;
+                margin-bottom: 25vh;
+            }
+
+            .content-box, .image-box {
+                width: 100%;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+
+            .image-box {
+                margin-top: 1.5rem;
+                height: 350px;
+                filter: grayscale(0%);
+            }
+
+            .video-placeholder {
+                max-width: 100%;
+                height: 380px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mijn Portfolio</h1>
+        <p>Scroll langzaam naar beneden</p>
+    </header>
+
+    <section class="timeline-container">
+
+        <div class="timeline-item">
+            <div class="content-box">
+                <div class="year">2025 — Heden</div>
+                <h2>AI Geïntegreerde Dashboard</h2>
+                <p>Een minimalistische tool om data te visualiseren met behulp van moderne webstandaarden en machine learning API's. Dit project richt zich volledig op het stroomlijnen van complexe datasets naar heldere, behapbare inzichten voor de eindgebruiker zonder onnodige afleiding of trage laadtijden.</p>
+                <p>Door intensief te experimenteren met nieuwe framework-architecturen en slimme caching-strategieën is het gelukt om de interactiesnelheid met meer dan veertig procent te verhogen. Het ontwerp ademt rust en efficiëntie uit.</p>
+                
+                <div class="video-placeholder">
+                    <video src="Robotcrab.mp4" controls preload="metadata"></video>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="https://picsum.photos/seed/project1/800/1200" alt="Project 1">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="content-box">
+                <div class="year">2024</div>
+                <h2>E-commerce Minimalisme</h2>
+                <p>Een grondig herontwerp van een online winkelomgeving waarbij alle visuele ruis en overbodige elementen zijn verwijderd. De focus ligt hier puur op de productbeleving en een naadloze, frictievrije checkout-flow die de conversieratio flink heeft weten te verhogen.</p>
+                <p>De backend is volledig modulair opgebouwd, waardoor het onderhoud minimaal is en schalen naar miljoenen bezoekers per maand probleemloos verloopt. Rust en overzicht staan hierbij altijd op de eerste plaats.</p>
+                
+                <div class="video-placeholder">
+                    <video src="Parallelscara.mp4" controls preload="metadata"></video>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="https://picsum.photos/seed/project2/800/1200" alt="Project 2">
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="content-box">
+                <div class="year">2023</div>
+                <h2>Open Source Fotografie</h2>
+                <p>Een uniek platform ontwikkeld voor analoge en digitale fotografen om hun werk ongecomprimeerd en in volledige visuele rust te tonen aan een internationaal publiek. Geen pop-ups, geen advertenties, maar enkel pure esthetiek en respect voor het kunstwerk.</p>
+                <p>Het platform biedt geavanceerde kleurprofiel-ondersteuning en een supersnelle CDN-infrastructuur, waardoor fotografen uit de hele wereld hun portfolio met een gerust hart kunnen delen op maximale resolutie.</p>
+                
+                <div class="video-placeholder">
+                    <video src="Penplotter.mp4" controls preload="metadata"></video>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="https://picsum.photos/seed/project3/800/1200" alt="Project 3">
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        const items = document.querySelectorAll('.timeline-item');
+
+        function updateTimeline() {
+            if (window.innerWidth <= 768) return;
+
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                let progress = (windowHeight - rect.top) / (windowHeight * 0.7);
+                progress = Math.max(0, Math.min(1, progress));
+
+                item.style.setProperty('--progress', progress);
+            });
+        }
+
+        window.addEventListener('scroll', updateTimeline);
+        window.addEventListener('resize', updateTimeline);
+
+        updateTimeline();
+    </script>
+
+</body>
+</html>
