@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lucas Le — Portfolio</title>
     <style>
         * {
@@ -277,10 +277,15 @@
                 height: 10px;
             }
 
-            .image-box,
-            .timeline-item:nth-child(even) .image-box {
+            .image-box {
                 width: 45%;
                 height: 240px;
+                transform: translateX(calc(120px * (1 - min(1, var(--progress, 0) * 2.5))));
+                transition: transform 0.12s ease-out;
+            }
+
+            .timeline-item:nth-child(even) .image-box {
+                transform: translateX(calc(-120px * (1 - min(1, var(--progress, 0) * 2.5))));
             }
         }
     </style>
